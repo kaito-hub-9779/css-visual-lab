@@ -1,4 +1,4 @@
-import { shapeOutside } from "../templates/shapeOutside";
+import { shapeOutsideTemplate } from "../templates/shapeOutside";
 import { accentColorTemplate } from "../templates/accentColor";
 import { alignContentTemplate } from "../templates/alignContent";
 import { alignItemsTemplate } from "../templates/alignItems";
@@ -77,7 +77,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
-  shapeOutside,
+  shapeOutsideTemplate,
   accentColorTemplate,
   alignContentTemplate,
   alignItemsTemplate,
