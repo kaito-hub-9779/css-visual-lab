@@ -30,6 +30,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: npm run task:generate
 
+      - name: Check build
+        run: npm run build
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
