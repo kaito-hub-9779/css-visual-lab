@@ -1,3 +1,4 @@
+import { maskImage } from "../templates/maskImage";
 import { shapeOutside } from "../templates/shapeOutside";
 import { accentColorTemplate } from "../templates/accentColor";
 import { alignContentTemplate } from "../templates/alignContent";
@@ -77,6 +78,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  maskImage,
   shapeOutside,
   accentColorTemplate,
   alignContentTemplate,
