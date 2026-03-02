@@ -1,3 +1,5 @@
+import { gridTemplateColumnsTemplate } from "./gridColumnsTemplate";
+import { containerTypeTemplate } from "./containerType";
 import { shapeOutsideTemplate } from "../templates/shapeOutside";
 import { accentColorTemplate } from "../templates/accentColor";
 import { alignContentTemplate } from "../templates/alignContent";
@@ -77,6 +79,8 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  gridTemplateColumnsTemplate,
+  containerTypeTemplate,
   shapeOutsideTemplate,
   accentColorTemplate,
   alignContentTemplate,
