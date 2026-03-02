@@ -1,3 +1,4 @@
+import { placeSelfTemplate } from "./placeSelf";
 import { gridTemplateColumnsTemplate } from "./gridColumnsTemplate";
 import { containerTypeTemplate } from "./containerType";
 import { shapeOutsideTemplate } from "../templates/shapeOutside";
@@ -79,6 +80,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  placeSelfTemplate,
   gridTemplateColumnsTemplate,
   containerTypeTemplate,
   shapeOutsideTemplate,
