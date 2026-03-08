@@ -1,3 +1,4 @@
+import { maskImageTemplate } from "./maskImage";
 import { scrollSnapAlignTemplate } from "./scrollSnapAlign";
 import { placeSelfTemplate } from "./placeSelf";
 import { gridTemplateColumnsTemplate } from "./gridColumnsTemplate";
@@ -81,6 +82,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  maskImageTemplate,
   scrollSnapAlignTemplate,
   placeSelfTemplate,
   gridTemplateColumnsTemplate,
