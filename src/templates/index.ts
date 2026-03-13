@@ -1,3 +1,4 @@
+import { overscrollBehaviorTemplate } from "./overscrollBehavior";
 import { gridTemplateAreasTemplate } from "./gridAreasTemplate";
 import { gridAutoColumnsTemplate } from "./gridAutoColumns";
 import { gridColumnTemplate } from "./gridColumn";
@@ -85,6 +86,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  overscrollBehaviorTemplate,
   gridTemplateAreasTemplate,
   gridAutoColumnsTemplate,
   gridColumnTemplate,
