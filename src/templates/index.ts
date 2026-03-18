@@ -1,3 +1,4 @@
+import { textUnderlineOffsetTemplate } from "./textUnderlineOffset";
 import { backgroundAttachmentTemplate } from "./backgroundAttachment";
 import { overscrollBehaviorTemplate } from "./overscrollBehavior";
 import { gridTemplateAreasTemplate } from "./gridAreasTemplate";
@@ -87,6 +88,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  textUnderlineOffsetTemplate,
   backgroundAttachmentTemplate,
   overscrollBehaviorTemplate,
   gridTemplateAreasTemplate,
