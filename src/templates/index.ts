@@ -1,3 +1,4 @@
+import { textWrapTemplate } from "./textWrap";
 import { textUnderlineOffsetTemplate } from "./textUnderlineOffset";
 import { backgroundAttachmentTemplate } from "./backgroundAttachment";
 import { overscrollBehaviorTemplate } from "./overscrollBehavior";
@@ -88,6 +89,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  textWrapTemplate,
   textUnderlineOffsetTemplate,
   backgroundAttachmentTemplate,
   overscrollBehaviorTemplate,
