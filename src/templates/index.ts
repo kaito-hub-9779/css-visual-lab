@@ -1,3 +1,4 @@
+import { maskModeTemplate } from "./maskMode";
 import { textWrapTemplate } from "./textWrap";
 import { textUnderlineOffsetTemplate } from "./textUnderlineOffset";
 import { backgroundAttachmentTemplate } from "./backgroundAttachment";
@@ -89,6 +90,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  maskModeTemplate,
   textWrapTemplate,
   textUnderlineOffsetTemplate,
   backgroundAttachmentTemplate,
