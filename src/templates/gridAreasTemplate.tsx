@@ -5,69 +5,68 @@ const demoContainerStyles: React.CSSProperties = {
   background: "#1a2332",
   padding: "20px",
   borderRadius: "8px",
-  minHeight: "250px", // Ensures visibility even with minimal content
+  minHeight: "250px",
   color: "#f8fafc",
-  display: "grid", // Essential for grid properties
-  gap: "10px", // Provides spacing between grid items for clarity
+  display: 'grid', // Essential for grid properties
+  gap: '10px', // Spacing between grid items
+  // gridTemplateColumns and gridTemplateRows are intentionally omitted here,
+  // as gridTemplateAreas implicitly defines the grid structure (columns and rows).
+  // This allows the selected gridTemplateAreas value to fully dictate the layout.
 };
 
-const areaBoxStyles: React.CSSProperties = {
-  color: "#1a2332", // Default dark text color for brighter backgrounds
-  padding: "10px",
-  borderRadius: "4px",
-  textAlign: "center",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minHeight: "50px", // Ensures each grid area has a minimum visual size
-  fontWeight: "bold",
-  fontSize: "0.9em",
-  boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
+const itemStyle: React.CSSProperties = {
+  background: '#38bdf8',
+  color: '#1a2332',
+  padding: '15px',
+  borderRadius: '4px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontWeight: 'bold',
+  fontSize: '1.1em',
+  minHeight: '40px', // Ensure items have a minimum height for visibility
 };
 
 export const gridTemplateAreasTemplate: PropertyTemplate = {
   name: "Grid Template Areas",
   controls: [],
   values: [
-    `"header header header" "nav main aside" "footer footer footer"`,
-    `"top top" "left right" "bottom bottom"`,
-    `"alpha" "beta" "gamma"`,
-    `"grid-start grid-start" ". grid-center"`, // Example with empty cell
-    `"a . b" ". c ." "d . e"`, // More complex example with empty cells
+    `"header header header" "nav main aside" "footer footer footer"`, // Classic layout
+    `"top top top" "left main right" "bottom bottom bottom"`, // Another common layout
+    `"sidebar content" "sidebar content"`, // Two-column fixed sidebar layout
+    `"a b c" "d e f"`, // Generic 3-column, 2-row layout
+    `"logo nav" "main main"`, // Simple header and main area layout
+    `". . ." ". . ."`, // An empty grid, demonstrating unused areas
   ],
   preview: (style) => (
     <div style={{ ...demoContainerStyles, ...style }}>
-      {/* Elements for the "header/nav/main/aside/footer" layout */}
-      <div style={{ ...areaBoxStyles, gridArea: "header", background: "#f97316" }}>Header</div>
-      <div style={{ ...areaBoxStyles, gridArea: "nav", background: "#fde047", color: "#1a2332" }}>Nav</div>
-      <div style={{ ...areaBoxStyles, gridArea: "main", background: "#6ee7b7", color: "#1a2332" }}>Main Content</div>
-      <div style={{ ...areaBoxStyles, gridArea: "aside", background: "#a78bfa" }}>Aside</div>
-      <div style={{ ...areaBoxStyles, gridArea: "footer", background: "#f97316" }}>Footer</div>
+      {/* Items representing common grid areas.
+          Items with a gridArea property will be placed by gridTemplateAreas.
+          Items whose gridArea is not specified in the current template will
+          either be auto-placed or not shown if the template is too restrictive. */}
+      <div style={{ ...itemStyle, gridArea: 'header' }}>Header</div>
+      <div style={{ ...itemStyle, gridArea: 'nav' }}>Navigation</div>
+      <div style={{ ...itemStyle, gridArea: 'main' }}>Main Content</div>
+      <div style={{ ...itemStyle, gridArea: 'aside' }}>Aside</div>
+      <div style={{ ...itemStyle, gridArea: 'footer' }}>Footer</div>
+      <div style={{ ...itemStyle, gridArea: 'sidebar' }}>Sidebar</div>
 
-      {/* Elements for the "top/left/right/bottom" layout */}
-      <div style={{ ...areaBoxStyles, gridArea: "top", background: "#3b82f6" }}>Top</div>
-      <div style={{ ...areaBoxStyles, gridArea: "left", background: "#84cc16", color: "#1a2332" }}>Left</div>
-      <div style={{ ...areaBoxStyles, gridArea: "right", background: "#ef4444" }}>Right</div>
-      <div style={{ ...areaBoxStyles, gridArea: "bottom", background: "#3b82f6" }}>Bottom</div>
+      {/* Generic items for more abstract templates (a, b, c, etc.) */}
+      <div style={{ ...itemStyle, gridArea: 'top' }}>Top</div>
+      <div style={{ ...itemStyle, gridArea: 'left' }}>Left</div>
+      <div style={{ ...itemStyle, gridArea: 'right' }}>Right</div>
+      <div style={{ ...itemStyle, gridArea: 'bottom' }}>Bottom</div>
 
-      {/* Elements for the "alpha/beta/gamma" layout */}
-      <div style={{ ...areaBoxStyles, gridArea: "alpha", background: "#ec4899" }}>Alpha</div>
-      <div style={{ ...areaBoxStyles, gridArea: "beta", background: "#22c55e", color: "#1a2332" }}>Beta</div>
-      <div style={{ ...areaBoxStyles, gridArea: "gamma", background: "#a855f7" }}>Gamma</div>
-
-      {/* Elements for the "grid-start/grid-center" layout */}
-      <div style={{ ...areaBoxStyles, gridArea: "grid-start", background: "#eab308", color: "#1a2332" }}>Start</div>
-      <div style={{ ...areaBoxStyles, gridArea: "grid-center", background: "#14b8a6", color: "#1a2332" }}>Center</div>
-
-      {/* Elements for the "a . b / . c . / d . e" layout */}
-      <div style={{ ...areaBoxStyles, gridArea: "a", background: "#be185d" }}>A</div>
-      <div style={{ ...areaBoxStyles, gridArea: "b", background: "#fb923c" }}>B</div>
-      <div style={{ ...areaBoxStyles, gridArea: "c", background: "#818cf8" }}>C</div>
-      <div style={{ ...areaBoxStyles, gridArea: "d", background: "#06b6d4" }}>D</div>
-      <div style={{ ...areaBoxStyles, gridArea: "e", background: "#f43f5e" }}>E</div>
+      <div style={{ ...itemStyle, gridArea: 'a' }}>A</div>
+      <div style={{ ...itemStyle, gridArea: 'b' }}>B</div>
+      <div style={{ ...itemStyle, gridArea: 'c' }}>C</div>
+      <div style={{ ...itemStyle, gridArea: 'd' }}>D</div>
+      <div style={{ ...itemStyle, gridArea: 'e' }}>E</div>
+      <div style={{ ...itemStyle, gridArea: 'f' }}>F</div>
+      <div style={{ ...itemStyle, gridArea: 'logo' }}>Logo</div>
     </div>
   ),
-  generate: (v) => ({ gridTemplateAreas: v as any }),
+  generate: (v) => ({ gridTemplateAreas: v as string }),
   prefix: "grid-template-areas: ",
   parentClass: "container", // This property applies to the grid container
 };
