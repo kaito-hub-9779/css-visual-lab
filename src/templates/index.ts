@@ -1,3 +1,4 @@
+import { placeContentTemplate } from "./placeContent";
 import { maskSizeTemplate } from "./maskSize";
 import { maskModeTemplate } from "./maskMode";
 import { textWrapTemplate } from "./textWrap";
@@ -91,6 +92,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  placeContentTemplate,
   maskSizeTemplate,
   maskModeTemplate,
   textWrapTemplate,
