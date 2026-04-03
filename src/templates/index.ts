@@ -1,3 +1,4 @@
+import { fontFeatureSettingsTemplate } from "./fontFeatureSettings";
 import { gridAutoRowsTemplate } from "./gridAutoRows";
 import { maskSizeTemplate } from "./maskSize";
 import { maskModeTemplate } from "./maskMode";
@@ -92,6 +93,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  fontFeatureSettingsTemplate,
   gridAutoRowsTemplate,
   maskSizeTemplate,
   maskModeTemplate,
