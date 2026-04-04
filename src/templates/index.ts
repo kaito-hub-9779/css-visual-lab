@@ -1,3 +1,4 @@
+import { outlineOffsetTemplate } from "./outlineOffset";
 import { fontFeatureSettingsTemplate } from "./fontFeatureSettings";
 import { gridAutoRowsTemplate } from "./gridAutoRows";
 import { maskSizeTemplate } from "./maskSize";
@@ -93,6 +94,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  outlineOffsetTemplate,
   fontFeatureSettingsTemplate,
   gridAutoRowsTemplate,
   maskSizeTemplate,
