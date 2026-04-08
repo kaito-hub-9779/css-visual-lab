@@ -1,3 +1,4 @@
+import { gridRowTemplate } from "./gridRow";
 import { backgroundClipTemplate } from "./backgroundClip";
 import { fontFeatureSettingsTemplate } from "./fontFeatureSettings";
 import { gridAutoRowsTemplate } from "./gridAutoRows";
@@ -94,6 +95,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  gridRowTemplate,
   backgroundClipTemplate,
   fontFeatureSettingsTemplate,
   gridAutoRowsTemplate,
