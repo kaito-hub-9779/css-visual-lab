@@ -15,6 +15,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -48,11 +55,6 @@ jobs:
           BRANCH_NAME="daily-template-$(date +'%Y%m%d-%H%M%S')"
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
           git checkout -b $BRANCH_NAME
-
-      - name: Setup Git user
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Commit changes
         if: steps.changes.outputs.no_changes == 'false'
