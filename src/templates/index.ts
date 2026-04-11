@@ -1,3 +1,4 @@
+import { initialLetterTemplate } from "./initialLetter";
 import { placeContentTemplate } from "./placeContent";
 import { gridRowTemplate } from "./gridRow";
 import { backgroundClipTemplate } from "./backgroundClip";
@@ -96,6 +97,7 @@ import { zIndexTemplate } from "../templates/zIndex";
 import type { PropertyTemplate } from "../types";
 
 export const templates: PropertyTemplate[] = [
+  initialLetterTemplate,
   placeContentTemplate,
   gridRowTemplate,
   backgroundClipTemplate,
