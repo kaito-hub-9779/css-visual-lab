@@ -7,66 +7,88 @@ const demoContainerStyles: React.CSSProperties = {
   borderRadius: "8px",
   minHeight: "250px",
   color: "#f8fafc",
-  display: 'grid', // Essential for grid properties
-  gap: '10px', // Spacing between grid items
-  // gridTemplateColumns and gridTemplateRows are intentionally omitted here,
-  // as gridTemplateAreas implicitly defines the grid structure (columns and rows).
-  // This allows the selected gridTemplateAreas value to fully dictate the layout.
+  display: "grid", // Essential for grid-template-areas to work
+  gap: "10px", // Visual separation between grid items
+  // Define a base grid structure. gridTemplateAreas will then map named items onto these tracks.
+  // Using repeat(3, 1fr) for both columns and rows provides enough flexibility for most examples.
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gridTemplateRows: "repeat(3, 1fr)",
+  // Ensure content doesn't get too cramped and fills available space
+  alignItems: "stretch",
+  justifyItems: "stretch",
 };
 
-const itemStyle: React.CSSProperties = {
-  background: '#38bdf8',
-  color: '#1a2332',
-  padding: '15px',
-  borderRadius: '4px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontWeight: 'bold',
-  fontSize: '1.1em',
-  minHeight: '40px', // Ensure items have a minimum height for visibility
+// Styles for individual grid items to make them distinct and clearly labeled
+const gridItemStyle: React.CSSProperties = {
+  padding: "15px",
+  borderRadius: "4px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontWeight: "bold",
+  fontSize: "1.1em",
+  color: "#1a2332", // Darker text for contrast on colored backgrounds
+  boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
 };
 
 export const gridTemplateAreasTemplate: PropertyTemplate = {
   name: "Grid Template Areas",
-  controls: [],
+  controls: [], // This property is usually controlled by string values, not sliders
   values: [
-    `"header header header" "nav main aside" "footer footer footer"`, // Classic layout
-    `"top top top" "left main right" "bottom bottom bottom"`, // Another common layout
-    `"sidebar content" "sidebar content"`, // Two-column fixed sidebar layout
-    `"a b c" "d e f"`, // Generic 3-column, 2-row layout
-    `"logo nav" "main main"`, // Simple header and main area layout
-    `". . ." ". . ."`, // An empty grid, demonstrating unused areas
+    `"header header header"
+     "nav    main   aside"
+     "footer footer footer"`, // Classic website layout
+    `"top top"
+     "left right"
+     "bottom bottom"`, // 2x3 layout with top/bottom spanning
+    `"sidebar main"
+     "sidebar footer"`, // Sidebar layout (uses fewer columns/rows from the base grid)
+    `"a b c"
+     "d e f"`, // Generic 2x3 layout
+    `"one two three"
+     "four five six"
+     "seven eight nine"`, // Full 3x3 layout
+    `". . ."
+     ". main ."
+     ". . ."`, // Centered main content
   ],
   preview: (style) => (
     <div style={{ ...demoContainerStyles, ...style }}>
-      {/* Items representing common grid areas.
-          Items with a gridArea property will be placed by gridTemplateAreas.
-          Items whose gridArea is not specified in the current template will
-          either be auto-placed or not shown if the template is too restrictive. */}
-      <div style={{ ...itemStyle, gridArea: 'header' }}>Header</div>
-      <div style={{ ...itemStyle, gridArea: 'nav' }}>Navigation</div>
-      <div style={{ ...itemStyle, gridArea: 'main' }}>Main Content</div>
-      <div style={{ ...itemStyle, gridArea: 'aside' }}>Aside</div>
-      <div style={{ ...itemStyle, gridArea: 'footer' }}>Footer</div>
-      <div style={{ ...itemStyle, gridArea: 'sidebar' }}>Sidebar</div>
+      {/* Each div represents a named grid area. Their gridArea property determines their placement based on gridTemplateAreas. */}
+      <div style={{ ...gridItemStyle, background: "#f97316", gridArea: "header" }}>Header</div>
+      <div style={{ ...gridItemStyle, background: "#facc15", gridArea: "nav" }}>Nav</div>
+      <div style={{ ...gridItemStyle, background: "#a855f7", gridArea: "main" }}>Main Content</div>
+      <div style={{ ...gridItemStyle, background: "#84cc16", gridArea: "aside" }}>Aside</div>
+      <div style={{ ...gridItemStyle, background: "#3b82f6", gridArea: "footer" }}>Footer</div>
 
-      {/* Generic items for more abstract templates (a, b, c, etc.) */}
-      <div style={{ ...itemStyle, gridArea: 'top' }}>Top</div>
-      <div style={{ ...itemStyle, gridArea: 'left' }}>Left</div>
-      <div style={{ ...itemStyle, gridArea: 'right' }}>Right</div>
-      <div style={{ ...itemStyle, gridArea: 'bottom' }}>Bottom</div>
+      {/* Additional common area names for other demo values */}
+      <div style={{ ...gridItemStyle, background: "#ef4444", gridArea: "top" }}>Top</div>
+      <div style={{ ...gridItemStyle, background: "#22c55e", gridArea: "left" }}>Left</div>
+      <div style={{ ...gridItemStyle, background: "#facc15", gridArea: "right" }}>Right</div>
+      <div style={{ ...gridItemStyle, background: "#eab308", gridArea: "bottom" }}>Bottom</div>
+      <div style={{ ...gridItemStyle, background: "#10b981", gridArea: "sidebar" }}>Sidebar</div>
 
-      <div style={{ ...itemStyle, gridArea: 'a' }}>A</div>
-      <div style={{ ...itemStyle, gridArea: 'b' }}>B</div>
-      <div style={{ ...itemStyle, gridArea: 'c' }}>C</div>
-      <div style={{ ...itemStyle, gridArea: 'd' }}>D</div>
-      <div style={{ ...itemStyle, gridArea: 'e' }}>E</div>
-      <div style={{ ...itemStyle, gridArea: 'f' }}>F</div>
-      <div style={{ ...itemStyle, gridArea: 'logo' }}>Logo</div>
+      {/* Generic alphanumeric areas for flexible demos */}
+      <div style={{ ...gridItemStyle, background: "#6ee7b7", gridArea: "a" }}>A</div>
+      <div style={{ ...gridItemStyle, background: "#d8b4fe", gridArea: "b" }}>B</div>
+      <div style={{ ...gridItemStyle, background: "#fbcfe8", gridArea: "c" }}>C</div>
+      <div style={{ ...gridItemStyle, background: "#bfdbfe", gridArea: "d" }}>D</div>
+      <div style={{ ...gridItemStyle, background: "#fef08a", gridArea: "e" }}>E</div>
+      <div style={{ ...gridItemStyle, background: "#fda4af", gridArea: "f" }}>F</div>
+
+      {/* For full 3x3 demo */}
+      <div style={{ ...gridItemStyle, background: "#a78bfa", gridArea: "one" }}>1</div>
+      <div style={{ ...gridItemStyle, background: "#c084fc", gridArea: "two" }}>2</div>
+      <div style={{ ...gridItemStyle, background: "#e879f9", gridArea: "three" }}>3</div>
+      <div style={{ ...gridItemStyle, background: "#f472b6", gridArea: "four" }}>4</div>
+      <div style={{ ...gridItemStyle, background: "#fb7185", gridArea: "five" }}>5</div>
+      <div style={{ ...gridItemStyle, background: "#fdba74", gridArea: "six" }}>6</div>
+      <div style={{ ...gridItemStyle, background: "#fcd34d", gridArea: "seven" }}>7</div>
+      <div style={{ ...gridItemStyle, background: "#a3e635", gridArea: "eight" }}>8</div>
+      <div style={{ ...gridItemStyle, background: "#4ade80", gridArea: "nine" }}>9</div>
     </div>
   ),
-  generate: (v) => ({ gridTemplateAreas: v as string }),
+  generate: (v) => ({ gridTemplateAreas: v as any }), // Type assertion for flexibility with string literal types
   prefix: "grid-template-areas: ",
-  parentClass: "container", // This property applies to the grid container
+  parentClass: "grid-container", // Describes the parent element's role
 };
