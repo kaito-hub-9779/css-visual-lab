@@ -7,66 +7,58 @@ const demoContainerStyles: React.CSSProperties = {
   borderRadius: "8px",
   minHeight: "250px",
   color: "#f8fafc",
-  display: 'grid', // Essential for grid properties
-  gap: '10px', // Spacing between grid items
-  // gridTemplateColumns and gridTemplateRows are intentionally omitted here,
-  // as gridTemplateAreas implicitly defines the grid structure (columns and rows).
-  // This allows the selected gridTemplateAreas value to fully dictate the layout.
-};
-
-const itemStyle: React.CSSProperties = {
-  background: '#38bdf8',
-  color: '#1a2332',
-  padding: '15px',
-  borderRadius: '4px',
   display: 'flex',
-  alignItems: 'center',
   justifyContent: 'center',
-  fontWeight: 'bold',
-  fontSize: '1.1em',
-  minHeight: '40px', // Ensure items have a minimum height for visibility
+  alignItems: 'center',
 };
 
 export const gridTemplateAreasTemplate: PropertyTemplate = {
   name: "Grid Template Areas",
   controls: [],
   values: [
-    `"header header header" "nav main aside" "footer footer footer"`, // Classic layout
-    `"top top top" "left main right" "bottom bottom bottom"`, // Another common layout
-    `"sidebar content" "sidebar content"`, // Two-column fixed sidebar layout
-    `"a b c" "d e f"`, // Generic 3-column, 2-row layout
-    `"logo nav" "main main"`, // Simple header and main area layout
-    `". . ." ". . ."`, // An empty grid, demonstrating unused areas
+    `"header header header" "nav content aside" "footer footer footer"`,
+    `"sidebar content" "footer footer"`,
+    `"zoneA zoneA ." ". zoneB zoneB"`,
+    `"alpha alpha beta" "gamma delta delta" "epsilon epsilon ."`,
   ],
   preview: (style) => (
-    <div style={{ ...demoContainerStyles, ...style }}>
-      {/* Items representing common grid areas.
-          Items with a gridArea property will be placed by gridTemplateAreas.
-          Items whose gridArea is not specified in the current template will
-          either be auto-placed or not shown if the template is too restrictive. */}
-      <div style={{ ...itemStyle, gridArea: 'header' }}>Header</div>
-      <div style={{ ...itemStyle, gridArea: 'nav' }}>Navigation</div>
-      <div style={{ ...itemStyle, gridArea: 'main' }}>Main Content</div>
-      <div style={{ ...itemStyle, gridArea: 'aside' }}>Aside</div>
-      <div style={{ ...itemStyle, gridArea: 'footer' }}>Footer</div>
-      <div style={{ ...itemStyle, gridArea: 'sidebar' }}>Sidebar</div>
-
-      {/* Generic items for more abstract templates (a, b, c, etc.) */}
-      <div style={{ ...itemStyle, gridArea: 'top' }}>Top</div>
-      <div style={{ ...itemStyle, gridArea: 'left' }}>Left</div>
-      <div style={{ ...itemStyle, gridArea: 'right' }}>Right</div>
-      <div style={{ ...itemStyle, gridArea: 'bottom' }}>Bottom</div>
-
-      <div style={{ ...itemStyle, gridArea: 'a' }}>A</div>
-      <div style={{ ...itemStyle, gridArea: 'b' }}>B</div>
-      <div style={{ ...itemStyle, gridArea: 'c' }}>C</div>
-      <div style={{ ...itemStyle, gridArea: 'd' }}>D</div>
-      <div style={{ ...itemStyle, gridArea: 'e' }}>E</div>
-      <div style={{ ...itemStyle, gridArea: 'f' }}>F</div>
-      <div style={{ ...itemStyle, gridArea: 'logo' }}>Logo</div>
+    <div style={{ ...demoContainerStyles }}>
+      <div
+        style={{
+          ...style, // This is where gridTemplateAreas will be applied
+          display: 'grid',
+          width: '100%',
+          height: '100%',
+          minHeight: '200px',
+          gap: '8px',
+          gridTemplateColumns: '1fr 2fr 1fr', // Example columns for various templates
+          gridTemplateRows: 'auto 1fr auto', // Example rows
+          border: '2px solid #38bdf8',
+          borderRadius: '4px',
+          padding: '8px',
+          boxSizing: 'border-box',
+          fontSize: '0.875rem',
+        }}
+      >
+        <div style={{ gridArea: 'header', background: '#f97316', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Header</div>
+        <div style={{ gridArea: 'nav', background: '#a855f7', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Nav</div>
+        <div style={{ gridArea: 'sidebar', background: '#3b82f6', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Sidebar</div>
+        <div style={{ gridArea: 'content', background: '#22c55e', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Content</div>
+        <div style={{ gridArea: 'main', background: '#ef4444', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Main</div>
+        <div style={{ gridArea: 'aside', background: '#eab308', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Aside</div>
+        <div style={{ gridArea: 'footer', background: '#8b5cf6', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Footer</div>
+        {/* Abstract areas for more complex demos */}
+        <div style={{ gridArea: 'zoneA', background: '#64748b', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Zone A</div>
+        <div style={{ gridArea: 'zoneB', background: '#f472b6', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Zone B</div>
+        <div style={{ gridArea: 'alpha', background: '#ef4444', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Alpha</div>
+        <div style={{ gridArea: 'beta', background: '#f97316', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Beta</div>
+        <div style={{ gridArea: 'gamma', background: '#eab308', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Gamma</div>
+        <div style={{ gridArea: 'delta', background: '#22c55e', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Delta</div>
+        <div style={{ gridArea: 'epsilon', background: '#3b82f6', padding: '10px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Epsilon</div>
+      </div>
     </div>
   ),
-  generate: (v) => ({ gridTemplateAreas: v as string }),
+  generate: (v) => ({ gridTemplateAreas: v as any }),
   prefix: "grid-template-areas: ",
-  parentClass: "container", // This property applies to the grid container
+  parentClass: "container",
 };
